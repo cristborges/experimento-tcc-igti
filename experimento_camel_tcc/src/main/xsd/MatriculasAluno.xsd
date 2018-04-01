@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.cristborges.com/experimento_camel_tcc/MatriculasAluno"
+	xmlns:tns="http://www.cristborges.com/experimento_camel_tcc/MatriculasAluno"
+	elementFormDefault="qualified">
+
+	<xsd:element name="MatriculasAluno">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="MatriculasAlunoType" type="tns:MatriculasAlunoType" minOccurs="1" maxOccurs="1" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:complexType name="MatriculasAlunoType">
+		<xsd:sequence>
+			<xsd:element name="NomeAluno" type="xsd:string" minOccurs="1" maxOccurs="1" />
+			<xsd:element name="EmailAluno" type="xsd:string" minOccurs="1" maxOccurs="1" />
+			<xsd:element name="CentroGerenciamentoTurmas" type="tns:CentroGerenciamentoTurmas" minOccurs="1" maxOccurs="1" />
+			<xsd:element name="Matriculas" type="tns:MatriculaType" minOccurs="1" maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="MatriculaType">
+		<xsd:sequence>
+			<xsd:element name="Numero" type="xsd:string" minOccurs="1" maxOccurs="1" />
+			<xsd:element name="Data" type="xsd:dateTime" minOccurs="1" maxOccurs="1" />
+			<xsd:element name="TurmaReduzida" type="xsd:boolean" minOccurs="1" maxOccurs="1" />
+			<xsd:element name="Curso" type="xsd:string" minOccurs="1" maxOccurs="1" />
+			<xsd:element name="CodigoCurso" type="xsd:string" minOccurs="1" maxOccurs="1" />
+			<xsd:element name="CargaHorariaCurso" type="xsd:int" minOccurs="1" maxOccurs="1" />
+			<xsd:element name="PeriodoCurso" type="tns:Periodo" minOccurs="1" maxOccurs="1" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:simpleType name="CentroGerenciamentoTurmas">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="SmartClass"></xsd:enumeration>
+			<xsd:enumeration value="XYZ"></xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="Periodo">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="MATUTINO"></xsd:enumeration>
+			<xsd:enumeration value="VESPERTINO"></xsd:enumeration>
+			<xsd:enumeration value="NOTURNO"></xsd:enumeration>
+			<xsd:enumeration value="INTEGRAL"></xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+</xsd:schema>

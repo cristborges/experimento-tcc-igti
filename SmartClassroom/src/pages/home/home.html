@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Ambiente Interno</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-fab right bottom (click)="abrirModalAdicionarAmbiente()">
+    <button ion-fab mini><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+
+  <ion-card *ngIf="!ambientes.length">
+    <ion-card-header color="danger">
+      <ion-icon name="warning"></ion-icon>&nbsp;
+      Lista de ambientes vazia
+    </ion-card-header>
+    <ion-card-content>
+      Adicione ambientes para monitorar a temperatura/umidade e controlar os equipamentos.
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngFor="let ambiente of ambientes">
+    <ion-item icon-left>
+      <ion-icon name="pin" item-start></ion-icon>
+      <h2>Sala {{ ambiente.sala }}</h2>
+      <p><span *ngIf="ambiente.turma">Turma {{ ambiente.turma }}</span><span *ngIf="ambiente.turma && ambiente.curso"> - </span><span *ngIf="ambiente.curso">{{ ambiente.curso }}</span></p>
+    </ion-item>
+    <ion-row>
+      <ion-col col-6>
+        <ion-label float-left padding-left>AC</ion-label>
+        <ion-toggle [(ngModel)]="ambiente.arCondicionadoLigado" (ionChange)="alterarEstadoArCondicionado(ambiente)" color="secondary" [attr.padding-top]="platform.is('windows') ? '' : null"></ion-toggle>
+      </ion-col>
+      <ion-col padding-top col-3 *ngIf="ambiente.temperatura">
+        <ion-icon name="thermometer" float-left></ion-icon>
+        <span float-left>&nbsp;</span>
+        <div>{{ ambiente.temperatura }}ºC</div>
+      </ion-col>
+      <ion-col padding-top col-3 *ngIf="ambiente.umidade">
+        <ion-icon name="water" float-left></ion-icon>
+        <span float-left>&nbsp;</span>
+        <div>{{ ambiente.umidade }}%</div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col text-right>
+        <button ion-button clear small color="danger" icon-start (click)="removerAmbiente(ambiente)">
+          <ion-icon name='trash'></ion-icon>
+          Remover
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+</ion-content>
