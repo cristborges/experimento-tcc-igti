@@ -47,6 +47,7 @@ boolean verifyWiFiConnection() {
 
   if (wiFiConnected()) {
     currentUnixTime = ntpClient.getUnixTime();
+    Serial.println(currentUnixTime);
   }
 
   return wiFiConnected();

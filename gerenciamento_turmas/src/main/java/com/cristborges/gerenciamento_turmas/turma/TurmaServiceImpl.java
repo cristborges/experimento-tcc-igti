@@ -105,8 +105,8 @@ public class TurmaServiceImpl implements TurmaService {
 						Date.from(terminoAgendamentoTurma.toInstant())
 					));
 
-					agendamentos[quantidadeAgendamentos][0] = inicioAgendamentoTurma.toInstant().toEpochMilli();
-					agendamentos[quantidadeAgendamentos][1] = terminoAgendamentoTurma.toInstant().toEpochMilli();
+					agendamentos[quantidadeAgendamentos][0] = inicioAgendamentoTurma.toInstant().toEpochMilli() / 1000;
+					agendamentos[quantidadeAgendamentos][1] = terminoAgendamentoTurma.toInstant().toEpochMilli() / 1000;
 					quantidadeAgendamentos++;
 
 					cargaHorariaAAgendar -= (int) Duration.between(inicioAgendamentoTurma, terminoAgendamentoTurma).toHours();

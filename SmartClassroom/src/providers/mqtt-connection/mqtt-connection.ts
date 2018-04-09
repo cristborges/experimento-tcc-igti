@@ -12,7 +12,7 @@ export class MqttConnectionProvider {
   constructor(public uniqueDeviceID: UniqueDeviceID) {
 	this.uniqueDeviceID.get()
 	  .then((uuid: string) => {
-        this._client = new Paho.MQTT.Client('192.168.0.101', 61614, 'SmartClassroomApp:' + uuid);
+        this._client = new Paho.MQTT.Client('192.168.0.102', 61614, 'SmartClassroomApp:' + uuid);
 
         this._client.connect({ onSuccess: _ => this.onConnect(this._client) });
 

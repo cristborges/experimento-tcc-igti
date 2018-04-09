@@ -76,8 +76,8 @@ void callbackMQTT(const char* topic, byte* payload, unsigned int length) {
 
   if (strcmp(topic, CLASSROOM_COURSE_SCHEDULING_SET_TOPIC) == 0) {
     if (strcmp(classroomID, jsonObject["sala"]) == 0) {
-      scheduledCourse = (char*) jsonObject["curso"].as<char*>();
-      scheduledClass = (char*) jsonObject["turma"].as<char*>();
+      strcpy(scheduledCourse, (char*) jsonObject["curso"].as<char*>());
+      strcpy(scheduledClass, (char*) jsonObject["turma"].as<char*>());
 
       JsonArray& jsonArraySchedules = jsonObject["agendamentos"];
       size_t schedulesSize = jsonArraySchedules.size();
@@ -153,5 +153,7 @@ void publishClassroomInfoToMQTT() {
   jsonObject.printTo(payload, MQTT_SEND_MESSAGE_MAX_LEN);
 
   MQTT.publish(CLASSROOM_INFO_TOPIC, payload);
+
+  Serial.println(payload);
 }
 

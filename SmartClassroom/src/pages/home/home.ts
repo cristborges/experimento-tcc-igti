@@ -30,7 +30,6 @@ export class HomePage {
         idsSalas.forEach((idSala: string) => {
           let ambiente: Ambiente = new Ambiente();
           ambiente.sala = idSala;
-		  ambiente.temperaturaArCondicionado = 22;
           this.ambientes.push(ambiente);
           this._idsSalas.push(idSala);
         });
@@ -148,7 +147,6 @@ export class ModalAdicionarAmbiente {
 
   constructor(public platform: Platform, public params: NavParams, public viewCtrl: ViewController) {
     this.ambiente = new Ambiente();
-	this.ambiente.temperaturaArCondicionado = 22;
   }
 
   dismiss() {
