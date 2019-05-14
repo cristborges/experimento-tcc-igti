@@ -13,8 +13,8 @@
 		<org.apache.camel.version>2.14.1</org.apache.camel.version>
 		<com.google.code.gson.version>1.7.1</com.google.code.gson.version>
 		<org.codehaus.jackson.version>1.9.9</org.codehaus.jackson.version>
-		<org.springframework.version>4.0.4.RELEASE</org.springframework.version>
-		<org.springframework.data.version>1.5.2.RELEASE</org.springframework.data.version>
+		<org.springframework.version>4.3.17.RELEASE</org.springframework.version>
+		<org.springframework.data.version>1.11.12.RELEASE</org.springframework.data.version>
 		<javax.validation.version>1.0.0.GA</javax.validation.version>
 		<org.hibernate.version>4.3.5.Final</org.hibernate.version>
 		<org.hibernate-validator.version>4.3.1.Final</org.hibernate-validator.version>
